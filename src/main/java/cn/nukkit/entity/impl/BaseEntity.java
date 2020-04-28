@@ -643,27 +643,6 @@ public abstract class BaseEntity implements Entity, Metadatable {
         player.sendPacket(packet);
     }
 
-    public void sendData(Player player, EntityData... data) {
-        SetEntityDataPacket packet = new SetEntityDataPacket();
-        packet.setRuntimeEntityId(this.getRuntimeId());
-
-        for (EntityData entityData : data) {
-            packet.getMetadata().put(entityData, this.data.get(entityData));
-        }
-
-        player.sendPacket(packet);
-    }
-
-    public void sendFlags(Player player) {
-        SetEntityDataPacket packet = new SetEntityDataPacket();
-        packet.setRuntimeEntityId(this.getRuntimeId());
-
-        packet.getMetadata().put(FLAGS, this.data.get(FLAGS));
-        packet.getMetadata().put(FLAGS_2, this.data.get(FLAGS_2));
-
-        player.sendPacket(packet);
-    }
-
     private void sendDataToViewers(EntityDataMap map) {
         SetEntityDataPacket packet = new SetEntityDataPacket();
         packet.setRuntimeEntityId(this.getRuntimeId());
